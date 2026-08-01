@@ -4,20 +4,17 @@ on:
   push:
     branches:
       - main
-      - develop
 
   pull_request:
     branches:
       - main
-      - develop
 
 jobs:
   build:
-    name: Build Angular
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout do repositório
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Configurar Node.js
@@ -29,5 +26,5 @@ jobs:
       - name: Instalar dependências
         run: npm ci
 
-      - name: Compilar aplicação
+      - name: Gerar build
         run: npm run build
