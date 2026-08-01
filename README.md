@@ -43,6 +43,15 @@ O escritório atua nas seguintes áreas:
 - SCSS;
 - Angular Reactive Forms;
 - Angular CLI;
-- Netlify.
 
 ---
+
+## 🌐 Deploy
+
+O projeto é publicado na Hostinger.
+
+Para gerar a versão de produção:
+
+```bash
+npm run build
+```
