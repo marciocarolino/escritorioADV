@@ -1,0 +1,45 @@
+<footer class="footer" aria-label="Rodapé">
+  <div class="container">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo">
+          <span class="footer__logo-mark">AP</span>
+          <div class="footer__logo-text">
+            <span class="footer__logo-name">{{ config.officeName }}</span>
+            <span class="footer__logo-tag">{{ config.tagline }}</span>
+          </div>
+        </div>
+        <p class="footer__desc">
+          Atuação jurídica de excelência com compromisso, ética e dedicação.
+          Atendimento personalizado em todo o território nacional.
+        </p>
+        <p class="footer__oab">{{ config.lawyerName }} — {{ config.oabNumber }}</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegação do rodapé">
+        <h3 class="footer__col-title">Navegação</h3>
+        @for (item of navItems; track item.fragment) {
+          <a [routerLink]="['/']" [fragment]="item.fragment" class="footer__link">{{ item.label }}</a>
+        }
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__col-title">Contato</h3>
+        <a [href]="'tel:' + config.phone.replace(/\D/g, '')" class="footer__link">{{ config.phone }}</a>
+        <a [href]="'mailto:' + config.email" class="footer__link">{{ config.email }}</a>
+        <span class="footer__link footer__link--static">{{ config.address }}</span>
+        <a [href]="config.instagramUrl" target="_blank" rel="noopener" class="footer__link">{{ config.instagram }}</a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__copy">
+        &copy; {{ year }} {{ config.officeName }}. Todos os direitos reservados.
+      </p>
+      <p class="footer__legal">
+        Este site tem caráter meramente informativo, em conformidade com o Código de
+        Ética da OAB.
+      </p>
+    </div>
+  </div>
+</footer>

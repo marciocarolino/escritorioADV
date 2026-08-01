@@ -1,0 +1,33 @@
+<section id="areas" class="section practice" aria-labelledby="practice-title">
+  <div class="container">
+    <header class="practice__header" appReveal>
+      <p class="section-eyebrow">Nossas Especialidades</p>
+      <h2 id="practice-title" class="section-title">Áreas de Atuação</h2>
+      <span class="gold-line gold-line-center"></span>
+      <p class="practice__intro">
+        Atendimento jurídico completo, com profundo conhecimento técnico em cada
+        área do direito, sempre pautado pela ética e pelo compromisso com o cliente.
+      </p>
+    </header>
+
+    <div class="practice__grid">
+      @for (area of areas; track area.title; let i = $index) {
+        <article class="practice__card" appReveal [appRevealDelay]="i * 80">
+          @if (area.badge) {
+            <span class="practice__badge">{{ area.badge }}</span>
+          }
+          <div class="practice__icon">
+            <app-practice-icon [name]="area.icon" />
+          </div>
+          <h3 class="practice__card-title">{{ area.title }}</h3>
+          <p class="practice__card-desc">{{ area.description }}</p>
+        </article>
+      }
+    </div>
+
+    <div class="practice__cta" appReveal>
+      <p class="practice__cta-text">Não encontrou sua área? Entre em contato para uma avaliação personalizada.</p>
+      <a [routerLink]="['/']" fragment="contato" class="btn btn-outline">Solicitar Consulta</a>
+    </div>
+  </div>
+</section>

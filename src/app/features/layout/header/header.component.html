@@ -1,0 +1,54 @@
+<header class="header" [class.scrolled]="scrolled()" [class.menu-open]="menuOpen()">
+  <div class="header__bar">
+    <div class="container header__inner">
+      <a routerLink="/" class="header__logo" (click)="closeMenu()" aria-label="Página inicial">
+        <span class="header__logo-mark">AP</span>
+        <span class="header__logo-text">
+          <span class="header__logo-name">{{ config.officeName }}</span>
+          <span class="header__logo-tag">{{ config.tagline }}</span>
+        </span>
+      </a>
+
+      <nav class="header__nav" aria-label="Navegação principal">
+        @for (item of navItems; track item.fragment) {
+          <a [routerLink]="['/']" [fragment]="item.fragment" class="header__link">{{ item.label }}</a>
+        }
+      </nav>
+
+      <a [href]="'https://wa.me/' + config.whatsapp" target="_blank" rel="noopener" class="btn btn-gold header__cta">
+        Falar Agora
+      </a>
+
+      <button
+        class="header__burger"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Abrir menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div class="header__mobile" [class.open]="menuOpen()">
+    <nav class="header__mobile-nav" aria-label="Navegação mobile">
+      @for (item of navItems; track item.fragment) {
+        <a [routerLink]="['/']" [fragment]="item.fragment" (click)="closeMenu()" class="header__mobile-link">
+          {{ item.label }}
+        </a>
+      }
+      <a
+        [href]="'https://wa.me/' + config.whatsapp"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-gold header__mobile-cta"
+        (click)="closeMenu()"
+      >
+        Falar no WhatsApp
+      </a>
+    </nav>
+  </div>
+</header>

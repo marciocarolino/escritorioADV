@@ -1,0 +1,41 @@
+<section id="valores" class="section mvv" aria-labelledby="mvv-title">
+  <div class="container">
+    <header class="mvv__header" appReveal>
+      <p class="section-eyebrow">Nossos Pilares</p>
+      <h2 id="mvv-title" class="section-title">Missão, Visão e Valores</h2>
+      <span class="gold-line gold-line-center"></span>
+    </header>
+
+    <div class="mvv__grid">
+      @for (pillar of pillars; track pillar.title; let i = $index) {
+        <article class="mvv__card" appReveal [appRevealDelay]="i * 100">
+          <div class="mvv__icon" aria-hidden="true">
+            @switch (pillar.icon) {
+              @case ('mission') {
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="24" cy="24" r="18" />
+                  <circle cx="24" cy="24" r="8" />
+                  <circle cx="24" cy="24" r="2" fill="currentColor" />
+                </svg>
+              }
+              @case ('vision') {
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 24s8-14 20-14 20 14 20 14-8 14-20 14-20-14-20-14z" />
+                  <circle cx="24" cy="24" r="6" />
+                  <circle cx="24" cy="24" r="2" fill="currentColor" />
+                </svg>
+              }
+              @case ('values') {
+                <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M24 4l6 12 14 2-10 10 2 14-12-7-12 7 2-14-10-10 14-2 6-12z" />
+                </svg>
+              }
+            }
+          </div>
+          <h3 class="mvv__card-title">{{ pillar.title }}</h3>
+          <p class="mvv__card-desc">{{ pillar.description }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

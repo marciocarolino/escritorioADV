@@ -1,0 +1,28 @@
+<section id="inicio" class="hero" aria-label="Apresentação">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+
+  <div class="container hero__content">
+    <p class="section-eyebrow hero__eyebrow">{{ config.oabNumber }}</p>
+    <h1 class="hero__title">
+      Defesa estratégica com<br />
+      <span class="hero__title-accent">excelência e compromisso</span>
+    </h1>
+    <span class="gold-line hero__line"></span>
+    <p class="hero__subtitle">
+      Atuação jurídica personalizada nas áreas Cível, Família, Sucessões, Consumidor,
+      Imobiliário, Trabalhista e Criminal. Cada caso conduzido com técnica, discrição
+      e dedicação integral.
+    </p>
+
+    <div class="hero__actions">
+      <a [routerLink]="['/']" fragment="contato" class="btn btn-gold">Agendar Consulta</a>
+      <a [routerLink]="['/']" fragment="areas" class="btn btn-outline">Áreas de Atuação</a>
+    </div>
+
+    <div class="hero__scroll" aria-hidden="true">
+      <span class="hero__scroll-text">Role para explorar</span>
+      <span class="hero__scroll-line"></span>
+    </div>
+  </div>
+</section>

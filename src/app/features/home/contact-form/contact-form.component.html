@@ -1,0 +1,183 @@
+@if (submitted()) {
+  <div class="form-success" role="alert" aria-live="polite">
+    <div class="form-success__icon" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="24" cy="24" r="20" />
+        <path d="M16 24l6 6 12-14" />
+      </svg>
+    </div>
+    <h3 class="form-success__title">Solicitação encaminhada</h3>
+    <p class="form-success__text">
+      O WhatsApp foi aberto com sua mensagem pronta para envio. Caso não tenha aberto,
+      verifique o bloqueador de pop-ups e tente novamente.
+    </p>
+    <button type="button" class="btn btn-outline" (click)="resetForm()">Enviar nova solicitação</button>
+  </div>
+} @else {
+  <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form__row">
+      <div class="form__field">
+        <label for="name" class="form__label">Nome completo <span class="form__req" aria-hidden="true">*</span></label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="form__input"
+          [class.error]="isInvalid('name')"
+          placeholder="Seu nome completo"
+          autocomplete="name"
+          aria-required="true"
+        />
+        @if (isRequiredError('name')) {
+          <span class="form__msg" role="alert">Informe seu nome completo.</span>
+        } @else if (isMinLengthError('name')) {
+          <span class="form__msg" role="alert">O nome deve ter ao menos 3 caracteres.</span>
+        }
+      </div>
+
+      <div class="form__field">
+        <label for="phone" class="form__label">Telefone <span class="form__req" aria-hidden="true">*</span></label>
+        <input
+          type="tel"
+          id="phone"
+          formControlName="phone"
+          class="form__input"
+          [class.error]="isInvalid('phone')"
+          placeholder="(00) 00000-0000"
+          autocomplete="tel"
+          aria-required="true"
+        />
+        @if (isRequiredError('phone')) {
+          <span class="form__msg" role="alert">Informe seu telefone.</span>
+        } @else if (isMinLengthError('phone')) {
+          <span class="form__msg" role="alert">Telefone inválido. Inclua DDD.</span>
+        }
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field">
+        <label for="email" class="form__label">E-mail <span class="form__req" aria-hidden="true">*</span></label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          class="form__input"
+          [class.error]="isInvalid('email')"
+          placeholder="seu@email.com"
+          autocomplete="email"
+          aria-required="true"
+        />
+        @if (isRequiredError('email')) {
+          <span class="form__msg" role="alert">Informe seu e-mail.</span>
+        } @else if (isEmailError('email')) {
+          <span class="form__msg" role="alert">E-mail inválido.</span>
+        }
+      </div>
+
+      <div class="form__field">
+        <label for="area" class="form__label">Área jurídica <span class="form__req" aria-hidden="true">*</span></label>
+        <select
+          id="area"
+          formControlName="area"
+          class="form__input form__select"
+          [class.error]="isInvalid('area')"
+          aria-required="true"
+        >
+          <option value="" disabled>Selecione...</option>
+          @for (a of areas; track a) {
+            <option [value]="a">{{ a }}</option>
+          }
+        </select>
+        @if (isRequiredError('area')) {
+          <span class="form__msg" role="alert">Selecione a área jurídica.</span>
+        }
+      </div>
+    </div>
+
+    <div class="form__row">
+      <div class="form__field">
+        <label for="city" class="form__label">Cidade <span class="form__req" aria-hidden="true">*</span></label>
+        <input
+          type="text"
+          id="city"
+          formControlName="city"
+          class="form__input"
+          [class.error]="isInvalid('city')"
+          placeholder="Sua cidade"
+          autocomplete="address-level2"
+          aria-required="true"
+        />
+        @if (isRequiredError('city')) {
+          <span class="form__msg" role="alert">Informe sua cidade.</span>
+        } @else if (isMinLengthError('city')) {
+          <span class="form__msg" role="alert">Cidade inválida.</span>
+        }
+      </div>
+
+      <div class="form__field">
+        <label for="state" class="form__label">Estado <span class="form__req" aria-hidden="true">*</span></label>
+        <select
+          id="state"
+          formControlName="state"
+          class="form__input form__select"
+          [class.error]="isInvalid('state')"
+          aria-required="true"
+        >
+          <option value="" disabled>Selecione...</option>
+          @for (s of states; track s.uf) {
+            <option [value]="s.uf">{{ s.uf }} — {{ s.name }}</option>
+          }
+        </select>
+        @if (isRequiredError('state')) {
+          <span class="form__msg" role="alert">Selecione seu estado.</span>
+        }
+      </div>
+    </div>
+
+    <div class="form__field">
+      <label for="description" class="form__label">Descrição do caso <span class="form__req" aria-hidden="true">*</span></label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form__input form__textarea"
+        [class.error]="isInvalid('description')"
+        rows="4"
+        placeholder="Descreva brevemente sua situação..."
+        aria-required="true"
+      ></textarea>
+      @if (isRequiredError('description')) {
+        <span class="form__msg" role="alert">Descreva seu caso.</span>
+      } @else if (isMinLengthError('description')) {
+        <span class="form__msg" role="alert">A descrição deve ter ao menos 10 caracteres.</span>
+      }
+    </div>
+
+    <div class="form__consent">
+      <label class="form__check-label">
+        <input
+          type="checkbox"
+          formControlName="consent"
+          class="form__checkbox"
+          aria-required="true"
+        />
+        <span class="form__check-custom" aria-hidden="true">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 8l3 3 7-7" />
+          </svg>
+        </span>
+        <span class="form__check-text">
+          Autorizo o tratamento dos meus dados pessoais para fins de contato e avaliação
+          jurídica do meu caso, conforme a LGPD (Lei nº 13.709/2018).
+        </span>
+      </label>
+      @if (isRequiredError('consent')) {
+        <span class="form__msg" role="alert">É necessário autorizar o tratamento de dados.</span>
+      }
+    </div>
+
+    <button type="submit" class="btn btn-gold form__submit" [disabled]="form.invalid">
+      Enviar pelo WhatsApp
+    </button>
+  </form>
+}

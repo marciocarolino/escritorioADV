@@ -1,0 +1,189 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  &__label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--c-text-muted);
+  }
+
+  &__req {
+    color: var(--c-gold-400);
+  }
+
+  &__input {
+    background: var(--c-primary-900);
+    border: 1px solid var(--c-neutral-700);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem var(--sp-2);
+    color: var(--c-text);
+    font-size: 0.95rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    width: 100%;
+
+    &::placeholder { color: var(--c-text-dim); }
+
+    &:focus {
+      outline: none;
+      border-color: var(--c-gold-400);
+      box-shadow: 0 0 0 3px rgba(201, 162, 39, 0.12);
+    }
+
+    &.error {
+      border-color: var(--c-error-500);
+      &:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12); }
+    }
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a227' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    padding-right: 2.5rem;
+
+    option { background: var(--c-primary-800); color: var(--c-text); }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: inherit;
+  }
+
+  &__msg {
+    font-size: 0.78rem;
+    color: var(--c-error-400);
+    margin-top: 2px;
+  }
+
+  /* Consent */
+  &__consent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1);
+  }
+
+  &__check-label {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-2);
+    cursor: pointer;
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+    line-height: 1.6;
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__check-custom {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 1.5px solid var(--c-neutral-600);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color var(--transition), background var(--transition);
+    margin-top: 2px;
+
+    svg {
+      width: 14px;
+      height: 14px;
+      color: var(--c-primary-900);
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+  }
+
+  &__checkbox:checked + &__check-custom {
+    background: var(--c-gold-400);
+    border-color: var(--c-gold-400);
+
+    svg { opacity: 1; }
+  }
+
+  &__checkbox:focus-visible + &__check-custom {
+    outline: 2px solid var(--c-gold-300);
+    outline-offset: 2px;
+  }
+
+  &__check-text {
+    max-width: 520px;
+  }
+
+  /* Submit */
+  &__submit {
+    align-self: flex-start;
+    padding: var(--sp-3) var(--sp-6);
+    transition: all var(--transition), opacity var(--transition);
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+  }
+}
+
+/* Success */
+.form-success {
+  text-align: center;
+  padding: var(--sp-6) var(--sp-4);
+  border: 1px solid var(--c-border-strong);
+  border-radius: var(--radius-md);
+  background: var(--c-primary-800);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-2);
+  animation: fadeInUp 0.5s ease;
+
+  &__icon {
+    width: 64px;
+    height: 64px;
+    color: var(--c-gold-300);
+    margin-bottom: var(--sp-1);
+
+    svg { width: 100%; height: 100%; }
+  }
+
+  &__title {
+    font-size: 1.5rem;
+    color: var(--c-gold-100);
+  font-weight: 600;
+  }
+
+  &__text {
+    color: var(--c-text-muted);
+    font-size: 0.9rem;
+    max-width: 420px;
+    line-height: 1.6;
+    margin-bottom: var(--sp-3);
+  }
+}
+
+@media (max-width: 600px) {
+  .form__row { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,13 @@
+<div class="cred-bar" role="region" aria-label="Credenciais">
+  <div class="container cred-bar__inner">
+    @for (item of credentials; track item.label; let i = $index) {
+      <div class="cred-bar__item" [style.animation-delay]="i * 0.1 + 's'">
+        <span class="cred-bar__value">{{ item.value }}</span>
+        <span class="cred-bar__label">{{ item.label }}</span>
+      </div>
+      @if (i < credentials.length - 1) {
+        <span class="cred-bar__divider" aria-hidden="true"></span>
+      }
+    }
+  </div>
+</div>
