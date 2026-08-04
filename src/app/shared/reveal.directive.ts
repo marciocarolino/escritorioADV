@@ -1,4 +1,4 @@
-import { Directive, ElementRef, inject, input, OnInit, OnDestroy } from '@angular/core';
+import { Directive, ElementRef, inject, input, type OnInit, type OnDestroy } from '@angular/core';
 
 @Directive({
   selector: '[appReveal]',

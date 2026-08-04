@@ -16,7 +16,7 @@ interface Credential {
 })
 export class CredibilityBarComponent {
   readonly credentials: Credential[] = [
-    { label: 'Inscrição', value: 'OAB' },
+    { label: 'OAB/MG 180.423 • OAB/RN 23.251A', value: 'OAB' },
     { label: 'Atendimento', value: '24h Criminal' },
     { label: 'Atuação', value: 'Nacional' },
     { label: 'Consultas', value: 'Presencial & Online' },

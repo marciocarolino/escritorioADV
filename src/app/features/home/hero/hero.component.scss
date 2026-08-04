@@ -33,6 +33,7 @@
     z-index: 2;
     max-width: 760px;
     padding-top: var(--sp-6);
+    padding-bottom: calc(var(--sp-6) + 100px);
     animation: fadeInUp 1s ease;
   }
 
@@ -79,7 +80,7 @@
   /* Scroll indicator */
   &__scroll {
     position: absolute;
-    bottom: var(--sp-6);
+    bottom: var(--sp-3);
     left: 50%;
     transform: translateX(-50%);
     display: flex;
