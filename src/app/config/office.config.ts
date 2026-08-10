@@ -18,7 +18,7 @@ export const OFFICE_CONFIG: OfficeConfig = {
   phone: '+55 84 8643-9643',
   whatsapp: '558486439643',
   email: 'deniscgbadv@gmail.com',
-  address: 'Av. Paulista, 1000 — 10º andar, São Paulo — SP',
+  address: 'Travessa Jundiais, Lagoa nova, Natal - RN, 59054-290',
   instagram: '@advocaciaprestigio',
   instagramUrl: 'https://instagram.com/advocaciaprestigio',
   tagline: 'Assessoria Jurídica Estratégica',
