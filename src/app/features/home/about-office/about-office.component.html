@@ -3,8 +3,8 @@
     <div class="about__visual" appReveal>
       <div class="about__image-frame">
         <img
-          src="assets/images/image.png"
-          alt="Escritório de advocacia — ambiente institucional"
+          src="assets/images/LOGO.jpeg"
+          alt="Logo do escritório"
           loading="lazy"
           width="560"
           height="640"
@@ -24,22 +24,30 @@
       </h2>
       <span class="gold-line"></span>
       <p class="about__text">
-        O escritório reúne tradição e modernidade na prestação de serviços jurídicos,
-        oferecendo soluções estratégicas e personalizadas para cada cliente. Nossa atuação
-        é fundamentada no estudo aprofundado, na ética profissional e no acompanhamento
-        próximo de cada caso, do início ao desfecho.
+        O escritório reúne tradição e modernidade na prestação de serviços
+        jurídicos, oferecendo soluções estratégicas e personalizadas para cada
+        cliente. Nossa atuação é fundamentada no estudo aprofundado, na ética
+        profissional e no acompanhamento próximo de cada caso, do início ao
+        desfecho.
       </p>
       <p class="about__text">
-        Atuamos com a convicção de que cada cliente merece uma defesa técnica qualificada,
-        pautada pelo respeito, pela transparência e pela busca incansável pelo melhor
-        resultado jurídico possível.
+        Atuamos com a convicção de que cada cliente merece uma defesa técnica
+        qualificada, pautada pelo respeito, pela transparência e pela busca
+        incansável pelo melhor resultado jurídico possível.
       </p>
 
       <ul class="about__highlights">
         @for (item of highlights; track item) {
           <li class="about__highlight">
             <span class="about__check" aria-hidden="true">
-              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg
+                viewBox="0 0 16 16"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
                 <path d="M3 8l3 3 7-7" />
               </svg>
             </span>
@@ -48,7 +56,9 @@
         }
       </ul>
 
-      <a [routerLink]="['/']" fragment="contato" class="btn btn-gold about__cta">Agende uma Consulta</a>
+      <a [routerLink]="['/']" fragment="contato" class="btn btn-gold about__cta"
+        >Agende uma Consulta</a
+      >
     </div>
   </div>
 </section>
